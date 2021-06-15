@@ -111,3 +111,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class MyFirstStateless extends StatefulWidget {
+  @override
+  _MyFirstStatelessState createState() => _MyFirstStatelessState();
+}
+
+class _MyFirstStatelessState extends State<MyFirstStateless> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
