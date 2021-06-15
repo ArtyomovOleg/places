@@ -24,8 +24,9 @@ flutter:
     - res/
 
   fonts:
-    - family: 'Roboto'
+    - family: "Roboto"
       fonts:
-        - asset: 'res/Roboto-Regular.ttf'
-        - asset: 'res/Roboto-Italic.ttf'
-          style: 'italic'
+        - asset: "res/Roboto-Regular.ttf"
+          style: normal
+        - asset: "res/Roboto-Italic.ttf"
+          style: italic
