@@ -187,7 +187,7 @@ class _MyStatefullWidgetState extends State<MyStatefullWidget> {
 
 // 3.6.4.1. Переименуйте файл main.dart в start.dart. Запустите проект. Почему
 // результат именно таков?
-// Не найдена файл с точкой входа в приложение.
+// Не найден файл с точкой входа в приложение.
 // Target file "lib/main.dart" not found.
 
 // 3.6.4.3. В файле main.dart создайте виджет приложения. Назовите его App.
