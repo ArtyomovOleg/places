@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
 class MyApp extends StatelessWidget {
@@ -132,12 +132,19 @@ class MyFirstWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     counters.cntBuild++;
     print('$runtimeType build: ${counters.cntBuild}');
+    print('context.runtimeType: ${context.runtimeType}');
+
     return Container(
       child: Center(
         child: Text('Hello!'),
       ),
     );
   }
+
+  // 3.6.4.5. Перейдем к рассмотрению контекста. В вашем Stateless виджет
+  // создайте метод без аргументов, который будет возвращать
+  // context.runtimeType. Получится ли реализовать подобное в данном виджете?
+  Type get myRuntimeType => runtimeType;
 }
 
 class Counters {
@@ -156,6 +163,9 @@ class MyStatefullWidget extends StatefulWidget {
 
   @override
   _MyStatefullWidgetState createState() => _MyStatefullWidgetState();
+
+  // 3.6.4.6. Проделайте предыдущий пункт в рамках Stateful. В чем разница?
+  Type get myRuntimeType => runtimeType;
 }
 
 class _MyStatefullWidgetState extends State<MyStatefullWidget> {
@@ -165,6 +175,8 @@ class _MyStatefullWidgetState extends State<MyStatefullWidget> {
   Widget build(BuildContext context) {
     counters.cntBuild++;
     print('$runtimeType build: ${counters.cntBuild}');
+    print('context.runtimeType: ${context.runtimeType}');
+
     return Container(
       child: Center(
         child: Text('Hello!'),
@@ -180,5 +192,32 @@ class _MyFirstStatelessState extends State<MyFirstStateless> {
   @override
   Widget build(BuildContext context) {
     return Container();
+  }
+}
+
+// 3.6.4.1. Переименуйте файл main.dart в start.dart. Запустите проект. Почему
+// результат именно таков?
+// Не найден файл с точкой входа в приложение.
+// Target file "lib/main.dart" not found.
+
+// 3.6.4.3. В файле main.dart создайте виджет приложения. Назовите его App.
+class App extends StatelessWidget {
+  // 3.6.4.4. В методе build() верните MaterialApp в поле home поставьте
+  // Stateless виджет из предыдущего домашнего задания(см. урок про виджеты).
+  // Рассмотрите его параметры. Задайте поле title. Запустите на Android. Где
+  // отобразится значение этого поля?
+  // Ответ: В описании написано, что отобразиться в "недавних" приложениях, а на
+  // iOS значение параметра не используется. К задаче приложу скриншот.
+  @override
+  Widget build(BuildContext context) {
+    final myFirstWidget = MyFirstWidget();
+    final myStatefullWidget = MyStatefullWidget();
+    // print('myRuntimeType: ${myFirstWidget.myRuntimeType.toString()}');
+    print('myRuntimeType: ${myStatefullWidget.myRuntimeType.toString()}');
+    return MaterialApp(
+      title: 'App',
+      // home: myFirstWidget,
+      home: myStatefullWidget,
+    );
   }
 }
