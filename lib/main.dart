@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // 3.6.3.5 Поместите ваш виджет на место MyHomePage в Вашем проекте.
+      home: MyStatefullWidget(),
     );
   }
 }
@@ -116,6 +117,60 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+// 3.6.3.1 Внутри созданного ранее проекта в папке main.dart создайте новый
+//Stateless виджет.
+// 3.6.3.2 Назовите его MyFirstWidget.
+class MyFirstWidget extends StatelessWidget {
+  // 3.6.3.4 Сделайте счетчик вызовов функции build() внутри виджета и выведите
+  // его с помощью print().
+  final counters = Counters();
+
+  MyFirstWidget({Key? key}) : super(key: key);
+
+  // 3.6.3.3 В методе build() возвратите следующее:
+  @override
+  Widget build(BuildContext context) {
+    counters.cntBuild++;
+    print('$runtimeType build: ${counters.cntBuild}');
+    return Container(
+      child: Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+}
+
+class Counters {
+  int cntBuild = 0;
+}
+
+// 3.6.3.7 Чему равно значение счетчика? Почему значение именно такое?
+// Ответ: Значение счетчика равно 1. Т.к. это виджет без состояния и все данные
+// перестраиваются заново.
+
+// 3.6.3.8 Сделайте второй виджет(уже на основе Stateful). Повторите пункты 3-7.
+// Ответ на вопрос изменился?
+// Ответ: Да. В памяти сохраняется текущее состояние счетчика.
+class MyStatefullWidget extends StatefulWidget {
+  MyStatefullWidget({Key? key}) : super(key: key);
+
+  @override
+  _MyStatefullWidgetState createState() => _MyStatefullWidgetState();
+}
+
+class _MyStatefullWidgetState extends State<MyStatefullWidget> {
+  final counters = Counters();
+
+  @override
+  Widget build(BuildContext context) {
+    counters.cntBuild++;
+    print('$runtimeType build: ${counters.cntBuild}');
+    return Container(
+      child: Center(
+        child: Text('Hello!'),
+      ),
+    );
+    
 class MyFirstStateless extends StatefulWidget {
   @override
   _MyFirstStatelessState createState() => _MyFirstStatelessState();
