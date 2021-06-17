@@ -170,5 +170,15 @@ class _MyStatefullWidgetState extends State<MyStatefullWidget> {
         child: Text('Hello!'),
       ),
     );
+    
+class MyFirstStateless extends StatefulWidget {
+  @override
+  _MyFirstStatelessState createState() => _MyFirstStatelessState();
+}
+
+class _MyFirstStatelessState extends State<MyFirstStateless> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
