@@ -21,19 +21,52 @@ class _SightListScreenState extends State<SightListScreen> {
           child: Container(
             width: 328,
             height: 72,
-            child: Align(
-              child: Text(
-                'Список\nинтересных мест',
-                style: TextStyle(
-                  color: Color(0xFF252849),
-                  fontSize: 32.0,
-                  height: 1.12,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
+            child: RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                  text: 'С',
+                  style: TextStyle(
+                    color: Color(0xFF4CAF50),
+                    fontSize: 32.0,
+                    height: 1.12,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w700,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'писок\n',
+                      style: TextStyle(
+                        color: Color(0xFF3B3E5B),
+                        fontSize: 32.0,
+                        height: 1.12,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
-                maxLines: 2,
-              ),
-              alignment: Alignment.centerLeft,
+                TextSpan(
+                    text: 'и',
+                    style: TextStyle(
+                      color: Color(0xFFFCDD3D),
+                      fontSize: 32.0,
+                      height: 1.12,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w700,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'нтересных мест',
+                        style: TextStyle(
+                          color: Color(0xFF3B3E5B),
+                          fontSize: 32.0,
+                          height: 1.12,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ]),
+              ]),
             ),
           ),
         ),
