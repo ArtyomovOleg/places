@@ -12,13 +12,13 @@ class SightCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Container(
-        height: 96 + 92,
+        height: 188,
         width: double.infinity,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
-              flex: 96,
+              flex: 3,
               child: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -63,7 +63,7 @@ class SightCard extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 92,
+              flex: 2,
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
@@ -74,8 +74,9 @@ class SightCard extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    SizedBox(width: 0, height: 16),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(16, 16, 16, 2),
+                      padding: EdgeInsets.fromLTRB(16, 0, 16, 2),
                       child: Container(
                         width: double.infinity,
                         child: Text(
@@ -93,20 +94,34 @@ class SightCard extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: FittedBox(
-                          fit: BoxFit.fitHeight,
-                          child: Text(
-                            sight.details,
-                            style: const TextStyle(
-                              color: Color(0xFF7C7E92),
-                              fontSize: 14.0,
-                              height: 1.28571,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
+                      child: Container(
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: LayoutBuilder(builder: (
+                            BuildContext context,
+                            BoxConstraints constraints,
+                          ) {
+                            return ConstrainedBox(
+                              constraints: BoxConstraints.loose(
+                                Size(
+                                  constraints.maxWidth / 2,
+                                  21,
+                                ),
+                              ),
+                              child: Text(
+                                sight.details,
+                                overflow: TextOverflow.fade,
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                  color: Color(0xFF7C7E92),
+                                  fontSize: 14.0,
+                                  height: 1.28571,
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            );
+                          }),
                         ),
                       ),
                     ),
