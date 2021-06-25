@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/ui/screen/sight_details.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -57,6 +58,12 @@ class _SightListScreenState extends State<SightListScreen> {
                     minVerticalPadding: 0,
                     onTap: () {
                       print('Tap on: ${sight.name}');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              SightDetails(sight),
+                        ),
+                      );
                     },
                   ),
               ],
