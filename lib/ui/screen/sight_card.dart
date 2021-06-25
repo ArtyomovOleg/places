@@ -40,7 +40,7 @@ class SightCard extends StatelessWidget {
                       left: 16,
                       top: 16,
                       child: Text(
-                        sight.type.toString().split('.')[1],
+                        sight.type.toString().split('.').last,
                         style: const TextStyle(
                           color: Color(0xFFFFFFFF),
                           fontSize: 14.0,

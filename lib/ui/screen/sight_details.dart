@@ -81,7 +81,7 @@ class SightDetails extends StatelessWidget {
                 ),
                 Row(children: [
                   Text(
-                    sight.type.toString().split('.')[1],
+                    sight.type.toString().split('.').last,
                     style: TextStyle(
                       color: Color(0xFF3B3E5B),
                       fontSize: 14.0,
