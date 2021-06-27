@@ -20,8 +20,8 @@ class SightCard extends StatelessWidget {
             Flexible(
               flex: 3,
               child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
                     colors: [
                       Color(0xFF0000DD),
                       Color(0xFFDD11DD),
@@ -29,9 +29,20 @@ class SightCard extends StatelessWidget {
                     begin: Alignment.centerLeft,
                     end: Alignment(0, 0.6),
                   ),
-                  borderRadius: BorderRadius.vertical(
+                  borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(16),
                   ),
+                  image: sight.assetImagePath.isNotEmpty
+                      ? DecorationImage(
+                          image: ExactAssetImage(sight.assetImagePath),
+                          fit: BoxFit.cover,
+                          alignment: Alignment(0, -0.75),
+                          colorFilter: ColorFilter.mode(
+                            Colors.white12,
+                            BlendMode.lighten,
+                          ),
+                        )
+                      : null,
                 ),
                 child: Stack(
                   fit: StackFit.expand,

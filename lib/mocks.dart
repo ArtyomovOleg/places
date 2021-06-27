@@ -19,7 +19,8 @@ final sightMonument = Sight()
   ..name = 'Памятник'
   ..type = SightType.Monument
   ..url = 'https://ru.wikipedia.org/wiki/Памятник_А._С._Пушкину_(Москва,_Пушкин'
-      'ская_площадь)';
+      'ская_площадь)'
+  ..assetImagePath = 'assets/images/monument_pushkin.jpg';
 
 final sightSquare = Sight()
   ..details = 'Таймс-сквер'
@@ -27,7 +28,8 @@ final sightSquare = Sight()
   ..lon = 0.02
   ..name = 'Площадь'
   ..type = SightType.Square
-  ..url = 'https://ru.wikipedia.org/wiki/Таймс-сквер';
+  ..url = 'https://ru.wikipedia.org/wiki/Таймс-сквер'
+  ..assetImagePath = 'assets/images/square_times.jpeg';
 
 final sightBeach = Sight()
   ..details = 'Варадеро'
@@ -35,7 +37,8 @@ final sightBeach = Sight()
   ..lon = 0.03
   ..name = 'Пляж'
   ..type = SightType.Beach
-  ..url = 'https://ru.wikipedia.org/wiki/Варадеро';
+  ..url = 'https://ru.wikipedia.org/wiki/Варадеро'
+  ..assetImagePath = 'assets/images/beach_varadero.jpeg';
 
 final sightGraveyard = Sight()
   ..details = 'Пер-Лашез'
@@ -43,4 +46,5 @@ final sightGraveyard = Sight()
   ..lon = 0.04
   ..name = 'Кладбище'
   ..type = SightType.Graveyard
-  ..url = 'https://ru.wikipedia.org/wiki/Пер-Лашез';
+  ..url = 'https://ru.wikipedia.org/wiki/Пер-Лашез'
+  ..assetImagePath = 'assets/images/graveyard_pere_lachaise.jpeg';
