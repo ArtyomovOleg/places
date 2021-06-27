@@ -25,7 +25,7 @@ class SightDetails extends StatelessWidget {
                 Container(
                   width: 288,
                   height: 360,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
                         Color(0xFFDD0000),
@@ -34,13 +34,17 @@ class SightDetails extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment(0.6, 0),
                     ),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: ExactAssetImage(sight.assetImagePath),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Container(
                     width: 288,
                     height: 360,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
                           Color(0xFF0000DD),
@@ -48,6 +52,10 @@ class SightDetails extends StatelessWidget {
                         ],
                         begin: Alignment.centerLeft,
                         end: Alignment(0, 0.6),
+                      ),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: ExactAssetImage(sight.assetImagePath),
                       ),
                     ),
                   ),
