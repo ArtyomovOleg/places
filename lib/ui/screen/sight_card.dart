@@ -32,21 +32,14 @@ class SightCard extends StatelessWidget {
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(16),
                   ),
-                  image: sight.assetImagePath.isNotEmpty
-                      ? DecorationImage(
-                          image: ExactAssetImage(sight.assetImagePath),
-                          fit: BoxFit.cover,
-                          alignment: Alignment(0, -0.75),
-                          colorFilter: ColorFilter.mode(
-                            Colors.white12,
-                            BlendMode.lighten,
-                          ),
-                        )
-                      : null,
                 ),
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
+                    sight.assetImagePath.isNotEmpty
+                        // ? Image.asset(sight.assetImagePath)
+                        ? imageFutureBuilder()
+                        : Container(),
                     Positioned(
                       left: 16,
                       top: 16,
@@ -143,6 +136,41 @@ class SightCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Future<Image> _topImage() {
+    return Future<Image>.delayed(
+      const Duration(seconds: 1), // задержка для демонстрации лоадера
+      () => Image.asset(
+        sight.assetImagePath,
+        fit: BoxFit.cover,
+        colorBlendMode: BlendMode.lighten,
+        color: Colors.white24,
+      ),
+    );
+  }
+
+  FutureBuilder<Image> imageFutureBuilder() {
+    return FutureBuilder<Image>(
+      future: _topImage(),
+      builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
+        Widget child;
+        if (snapshot.hasData) {
+          child = snapshot.data ?? Container();
+        } else if (snapshot.hasError) {
+          child = Container();
+        } else {
+          child = Center(
+            child: SizedBox(
+              child: CircularProgressIndicator(),
+              width: 20,
+              height: 20,
+            ),
+          );
+        }
+        return child;
+      },
     );
   }
 }
