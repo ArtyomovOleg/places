@@ -157,7 +157,22 @@ class SightCard extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
         Widget child;
         if (snapshot.hasData) {
-          child = snapshot.data ?? Container();
+          child = DecoratedBox(
+            child: Container(),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(16),
+              ),
+              image: DecorationImage(
+                image: snapshot.data!.image,
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.white24,
+                  BlendMode.lighten,
+                ),
+              ),
+            ),
+          );
         } else if (snapshot.hasError) {
           child = Container();
         } else {
