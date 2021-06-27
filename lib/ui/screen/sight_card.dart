@@ -74,7 +74,7 @@ class SightCard extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(width: 0, height: 16),
+                    SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.fromLTRB(16, 0, 16, 2),
                       child: Container(
