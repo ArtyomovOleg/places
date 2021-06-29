@@ -21,7 +21,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - res/
+    - assets/images/
 
   fonts:
     - family: "Roboto"

@@ -4,6 +4,7 @@ class Sight {
   String url = '';
   String details = '';
   SightType type = SightType.None;
+  String assetImagePath = '';
 }
 
 enum SightType {
