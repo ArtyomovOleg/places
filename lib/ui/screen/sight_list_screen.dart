@@ -30,15 +30,8 @@ class _SightListScreenState extends State<SightListScreen> {
                 child: RichText(
                   text: TextSpan(children: [
                     TextSpan(
-                      text: 'Cписок\nинтересных мест',
-                      style: TextStyle(
-                        color: Color(0xFF3B3E5B),
-                        fontSize: 32.0,
-                        height: 1.12,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                        text: 'Cписок\nинтересных мест',
+                        style: Theme.of(context).textTheme.headline1),
                   ]),
                 ),
               ),
