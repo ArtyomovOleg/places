@@ -10,29 +10,43 @@ class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFFFFFFF),
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(children: [
-        Container(
-          color: Color(0xFFFFFFFF),
-          height: 360,
-          width: double.infinity,
-          padding: const EdgeInsets.all(0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0.5),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0.5),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 288,
+                height: 360,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFDD0000),
+                      Color(0xFFDDDD11),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment(0.6, 0),
+                  ),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: ExactAssetImage(sight.assetImagePath),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
                   width: 288,
                   height: 360,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color(0xFFDD0000),
-                        Color(0xFFDDDD11),
+                        Color(0xFF0000DD),
+                        Color(0xFFDD11DD),
                       ],
-                      begin: Alignment.topCenter,
-                      end: Alignment(0.6, 0),
+                      begin: Alignment.centerLeft,
+                      end: Alignment(0, 0.6),
                     ),
                     image: DecorationImage(
                       fit: BoxFit.cover,
@@ -40,28 +54,8 @@ class SightDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    width: 288,
-                    height: 360,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xFF0000DD),
-                          Color(0xFFDD11DD),
-                        ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment(0, 0.6),
-                      ),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: ExactAssetImage(sight.assetImagePath),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         Padding(
@@ -76,42 +70,29 @@ class SightDetails extends StatelessWidget {
                   child: Text(
                     sight.name,
                     textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Color(0xFF3B3E5B),
-                      fontSize: 24.0,
-                      height: 1.20,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.normal,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                 ),
                 Row(children: [
                   Text(
                     sight.type.toString().split('.').last,
-                    style: TextStyle(
-                      color: Color(0xFF3B3E5B),
-                      fontSize: 14.0,
-                      height: 1.28571,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.normal,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      'закрыто до 09:00',
-                      style: TextStyle(
-                        color: Color(0xFF7C7E92),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.normal,
-                        fontStyle: FontStyle.normal,
-                        decoration: TextDecoration.none,
+                    child: Opacity(
+                      opacity: 0.56,
+                      child: Text(
+                        'закрыто до 09:00',
+                        style: TextStyle(
+                          color: Color(0xFF7C7E92),
+                          fontSize: 14.0,
+                          height: 1.28571,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.normal,
+                          fontStyle: FontStyle.normal,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
                     ),
                   ),
@@ -125,7 +106,7 @@ class SightDetails extends StatelessWidget {
                 sight.details,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
-                  color: Color(0xFF3B3E5B),
+                  color: Theme.of(context).textTheme.headline2?.color,
                   fontSize: 14.0,
                   height: 1.28571,
                   fontFamily: 'Roboto',
@@ -172,17 +153,18 @@ class SightDetails extends StatelessWidget {
                   fit: FlexFit.tight,
                   child: Container(
                     height: 40,
-                    child: Text(
-                      'Запланировать',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF7C7E92),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
-                        decoration: TextDecoration.none,
+                    child: Center(
+                      child: Text(
+                        'Запланировать',
+                        style: TextStyle(
+                          color: Color(0xFF7C7E92),
+                          fontSize: 14.0,
+                          height: 1.28571,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.normal,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
                     ),
                   ),
@@ -192,17 +174,18 @@ class SightDetails extends StatelessWidget {
                   fit: FlexFit.tight,
                   child: Container(
                     height: 40,
-                    child: Text(
-                      'В избранное',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF3B3E5B),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
-                        decoration: TextDecoration.none,
+                    child: Center(
+                      child: Text(
+                        'В избранное',
+                        style: TextStyle(
+                          color: Color(0xFF3B3E5B),
+                          fontSize: 14.0,
+                          height: 1.28571,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.normal,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
                     ),
                   ),

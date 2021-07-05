@@ -45,13 +45,7 @@ class SightCard extends StatelessWidget {
                       top: 16,
                       child: Text(
                         sight.type.toString().split('.').last,
-                        style: const TextStyle(
-                          color: Color(0xFFFFFFFF),
-                          fontSize: 14.0,
-                          height: 1.28571,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
                     Positioned(
@@ -71,11 +65,11 @@ class SightCard extends StatelessWidget {
               flex: 2,
               child: Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(16),
                   ),
-                  color: Color(0xFFF5F5F5),
+                  color: Theme.of(context).cardColor,
                 ),
                 child: Column(
                   children: [
@@ -87,13 +81,7 @@ class SightCard extends StatelessWidget {
                         child: Text(
                           sight.name,
                           maxLines: 2,
-                          style: const TextStyle(
-                            color: Color(0xFF3B3E5B),
-                            fontSize: 16.0,
-                            height: 1.25,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: Theme.of(context).textTheme.headline5,
                         ),
                       ),
                     ),
@@ -114,16 +102,10 @@ class SightCard extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                sight.details,
+                                'Закрыто до 09:00',
                                 overflow: TextOverflow.fade,
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                  color: Color(0xFF7C7E92),
-                                  fontSize: 14.0,
-                                  height: 1.28571,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                textAlign: TextAlign.left,
+                                style: Theme.of(context).textTheme.subtitle2,
                               ),
                             );
                           }),

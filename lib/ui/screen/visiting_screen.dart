@@ -24,7 +24,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
               child: Text(
                 'Избранное',
                 style: TextStyle(
-                  color: Color(0xFF252849),
+                  color: Theme.of(context).textTheme.headline1?.color,
                   fontSize: 18.0,
                   height: 1.33333,
                   fontFamily: 'Roboto',
@@ -33,7 +33,6 @@ class _VisitingScreenState extends State<VisitingScreen> {
               ),
             ),
           ),
-          backgroundColor: Color(0xFFFFFFFF),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(52),
             child: Column(
@@ -43,22 +42,9 @@ class _VisitingScreenState extends State<VisitingScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(40)),
-                      color: Color(0xFFF5F5F5),
+                      color: Theme.of(context).cardColor,
                     ),
                     child: TabBar(
-                      labelColor: Color(0xFFFFFFFF),
-                      unselectedLabelColor: Color(0xFF7C7E92),
-                      labelStyle: TextStyle(
-                        color: Color(0xFF252849),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                      ),
-                      indicator: BoxDecoration(
-                        color: Color(0xFF3B3E5B),
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
                       tabs: [
                         Tab(text: 'Хочу посетить'),
                         Tab(text: 'Посетил'),
