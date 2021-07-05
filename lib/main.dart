@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       title: 'Places',
       // home: SightListScreen(),
       home: VisitingScreen(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       theme: lightTheme,
       darkTheme: darkTheme,
     );
