@@ -60,6 +60,7 @@ class SightCard extends StatelessWidget {
                       child: Icon(
                         Icons.star_border_rounded,
                         size: 24,
+                        color: Colors.white,
                       ),
                     ),
                   ],
