@@ -43,13 +43,7 @@ class SightCardWantVisit extends StatelessWidget {
                     top: 16,
                     child: Text(
                       sight.type.toString().split('.').last,
-                      style: const TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Positioned(
@@ -76,11 +70,11 @@ class SightCardWantVisit extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(16),
                 ),
-                color: Color(0xFFF5F5F5),
+                color: Theme.of(context).cardColor,
               ),
               child: Column(
                 children: [
@@ -92,13 +86,7 @@ class SightCardWantVisit extends StatelessWidget {
                       child: Text(
                         sight.name,
                         maxLines: 2,
-                        style: const TextStyle(
-                          color: Color(0xFF3B3E5B),
-                          fontSize: 16.0,
-                          height: 1.25,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
                   ),
@@ -244,13 +232,7 @@ class SightCardVisited extends StatelessWidget {
                     top: 16,
                     child: Text(
                       sight.type.toString().split('.').last,
-                      style: const TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Positioned(
@@ -277,11 +259,11 @@ class SightCardVisited extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(16),
                 ),
-                color: Color(0xFFF5F5F5),
+                color: Theme.of(context).cardColor,
               ),
               child: Column(
                 children: [
@@ -293,13 +275,7 @@ class SightCardVisited extends StatelessWidget {
                       child: Text(
                         sight.name,
                         maxLines: 2,
-                        style: const TextStyle(
-                          color: Color(0xFF3B3E5B),
-                          fontSize: 16.0,
-                          height: 1.25,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
                   ),
