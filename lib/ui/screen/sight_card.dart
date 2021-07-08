@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:places/domain/sight.dart';
 
-class SightCard extends StatelessWidget {
+class SightCard extends StatefulWidget {
   final Sight sight;
+  final List<SvgPicture> iconsHeart = [
+    SvgPicture.asset('assets/icons/heart_unchecked.svg'),
+    SvgPicture.asset('assets/icons/heart_checked.svg'),
+  ];
 
   SightCard(this.sight, {Key? key}) : super(key: key);
+
+  @override
+  _SightCardState createState() => _SightCardState();
+}
+
+class _SightCardState extends State<SightCard> {
+  int heartIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +49,7 @@ class SightCard extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    sight.assetImagePath.isNotEmpty
+                    widget.sight.assetImagePath.isNotEmpty
                         // ? Image.asset(sight.assetImagePath)
                         ? imageFutureBuilder()
                         : Container(),
@@ -44,17 +57,22 @@ class SightCard extends StatelessWidget {
                       left: 16,
                       top: 16,
                       child: Text(
-                        sight.type.toString().split('.').last,
+                        widget.sight.type.toString().split('.').last,
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
                     Positioned(
-                      right: 18,
-                      top: 19,
-                      child: Icon(
-                        Icons.star_border_rounded,
-                        size: 24,
-                        color: Colors.white,
+                      right: 16,
+                      top: 16,
+                      child: IconButton(
+                        onPressed: () {
+                          print(
+                              '$runtimeType (${widget.sight.type}) heart icon has pressed');
+                          setState(() {
+                            heartIndex = (heartIndex - 1).abs();
+                          });
+                        },
+                        icon: widget.iconsHeart[heartIndex],
                       ),
                     ),
                   ],
@@ -79,7 +97,7 @@ class SightCard extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         child: Text(
-                          sight.name,
+                          widget.sight.name,
                           maxLines: 2,
                           style: Theme.of(context).textTheme.headline5,
                         ),
@@ -126,7 +144,7 @@ class SightCard extends StatelessWidget {
     return Future<Image>.delayed(
       const Duration(seconds: 1), // задержка для демонстрации лоадера
       () => Image.asset(
-        sight.assetImagePath,
+        widget.sight.assetImagePath,
         fit: BoxFit.cover,
         colorBlendMode: BlendMode.lighten,
         color: Colors.white24,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/sight_details.dart';
+import 'package:places/ui/screen/visiting_screen.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -13,87 +15,123 @@ class SightListScreen extends StatefulWidget {
 }
 
 class _SightListScreenState extends State<SightListScreen> {
+  int indexBottomNavigationBar = 0;
+
   @override
   Widget build(BuildContext context) {
+    SvgPicture iconListFill = SvgPicture.asset(
+      'assets/icons/list_fill.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    SvgPicture iconListOutline = SvgPicture.asset(
+      'assets/icons/list_outline.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    SvgPicture iconHeartFill = SvgPicture.asset(
+      'assets/icons/heart_checked.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    SvgPicture iconHeartOutline = SvgPicture.asset(
+      'assets/icons/heart_unchecked.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    List<Widget> _navigationBarScreens = <Widget>[
+      ScreenSightList(),
+      VisitingScreen(),
+    ];
+
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.7),
-        child: Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 64, 16, 16),
-              child: Container(
-                width: double.infinity,
-                height: 72,
-                child: RichText(
-                  text: TextSpan(children: [
-                    TextSpan(
-                        text: 'Cписок\nинтересных мест',
-                        style: Theme.of(context).textTheme.headline1),
-                  ]),
-                ),
-              ),
-            ),
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height * 0.7 - 72 - 80,
-              ),
-              child: ListView(
-                padding: const EdgeInsets.all(0),
-                children: [
-                  for (final sight in mocks)
-                    ListTile(
-                      title: SightCard(sight),
-                      contentPadding: const EdgeInsets.all(0),
-                      horizontalTitleGap: 0,
-                      minVerticalPadding: 0,
-                      onTap: () {
-                        print('Tap on: ${sight.name}');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                SightDetails(sight),
-                          ),
-                        );
-                      },
-                    ),
-                ],
-              ),
-            ),
-          ]),
-        ),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Hello!',
-              hintText: 'Hello!',
-            ),
-            autofocus: true,
-          ),
-        ),
-      ),
+      body: _navigationBarScreens[indexBottomNavigationBar],
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        currentIndex: 0,
+        currentIndex: indexBottomNavigationBar,
+        onTap: (int index) {
+          setState(() {
+            this.indexBottomNavigationBar = index;
+          });
+        },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_rounded),
+            icon:
+                indexBottomNavigationBar == 0 ? iconListFill : iconListOutline,
             label: 'Список интересных мест',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_rounded),
+            icon: indexBottomNavigationBar == 1
+                ? iconHeartFill
+                : iconHeartOutline,
             label: 'Хочу посетить / Посещенные места',
           ),
         ],
       ),
+    );
+  }
+}
+
+class ScreenSightList extends StatelessWidget {
+  const ScreenSightList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 64, 16, 16),
+          child: Container(
+            width: double.infinity,
+            height: 72,
+            child: RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                    text: 'Cписок\nинтересных мест',
+                    style: Theme.of(context).textTheme.headline1),
+              ]),
+            ),
+          ),
+        ),
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7 - 72 - 80,
+          ),
+          child: ListView(
+            padding: const EdgeInsets.all(0),
+            children: [
+              for (final sight in mocks)
+                ListTile(
+                  title: SightCard(sight),
+                  contentPadding: const EdgeInsets.all(0),
+                  horizontalTitleGap: 0,
+                  minVerticalPadding: 0,
+                  onTap: () {
+                    print('Tap on: ${sight.name}');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => SightDetails(sight),
+                      ),
+                    );
+                  },
+                ),
+            ],
+          ),
+        ),
+      ]),
     );
   }
 }

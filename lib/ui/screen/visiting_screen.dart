@@ -73,21 +73,6 @@ class _VisitingScreenState extends State<VisitingScreen> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          currentIndex: 1,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assignment_rounded),
-              label: 'Список интересных мест',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_rounded),
-              label: 'Хочу посетить / Посещенные места',
-            ),
-          ],
-        ),
       ),
     );
   }

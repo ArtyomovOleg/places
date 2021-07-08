@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
   colorScheme: ColorScheme.light(),
   primaryColor: const Color(0xFFFFFFFF),
+  buttonColor: Color(0xFF252849),
+  buttonTheme: ButtonThemeData(
+    colorScheme: ColorScheme.light(
+      background: Color(0xFF4CAF50),
+      primary: Color(0xFF3B3E5B),
+      secondary: Color(0xFF7C7E92).withOpacity(0.56),
+    ),
+  ),
   scaffoldBackgroundColor: const Color(0xFFFFFFFF),
   cardColor: Color(0xFFF5F5F5),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -51,6 +59,14 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme.dark(),
   primaryColor: const Color(0xFFb21222C),
+  buttonColor: Color(0xFFFFFFFF),
+  buttonTheme: ButtonThemeData(
+    colorScheme: ColorScheme.dark(
+      background: Color(0xFF6ADA6F),
+      primary: Color(0xFFFFFFFF),
+      secondary: Color(0xFF7C7E92).withOpacity(0.56),
+    ),
+  ),
   scaffoldBackgroundColor: const Color(0xFFb21222C),
   cardColor: Color(0xFF1A1A20),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
