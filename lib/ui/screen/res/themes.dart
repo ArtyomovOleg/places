@@ -39,7 +39,7 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
   ),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     headline1: lightHeadline1,
     headline2: lightHeadline2,
     headline3: lightHeadline3,
@@ -50,7 +50,7 @@ final ThemeData lightTheme = ThemeData(
     subtitle2: sightCardBottomText2,
     bodyText1: textWithoutStyle,
     // bodyText2: textWithoutStyle,
-    caption: textWithoutStyle,
+    caption: lightCaption,
     button: textWithoutStyle,
     overline: textWithoutStyle,
   ),
@@ -95,7 +95,7 @@ final ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
   ),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     headline1: darkHeadline1,
     headline2: darkHeadline2,
     headline3: darkHeadline3,
@@ -106,7 +106,7 @@ final ThemeData darkTheme = ThemeData(
     subtitle2: sightCardBottomText2,
     bodyText1: textWithoutStyle,
     // bodyText2: textWithoutStyle,
-    caption: textWithoutStyle,
+    caption: darkCaption,
     button: textWithoutStyle,
     overline: textWithoutStyle,
   ),
@@ -204,4 +204,20 @@ const TextStyle darkHeadline5 = TextStyle(
   height: 1.25,
   fontFamily: 'Roboto',
   fontWeight: FontWeight.w500,
+);
+
+final TextStyle lightCaption = TextStyle(
+  color: Color(0xFF7C7E92).withOpacity(0.56),
+  fontSize: 12.0,
+  height: 1.33333,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w400,
+);
+
+final TextStyle darkCaption = TextStyle(
+  color: Color(0xFF7C7E92).withOpacity(0.56),
+  fontSize: 12.0,
+  height: 1.33333,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w400,
 );

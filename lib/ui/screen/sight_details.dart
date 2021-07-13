@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/universal/buttons.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight sight;
@@ -65,26 +66,7 @@ class SightDetails extends StatelessWidget {
               Positioned(
                 left: 16,
                 top: 36,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).maybePop();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    width: 32,
-                    height: 32,
-                    child: Center(
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 24,
-                        color: Theme.of(context).buttonColor,
-                      ),
-                    ),
-                  ),
-                ),
+                child: BackButtonCentered(),
               )
             ],
           ),

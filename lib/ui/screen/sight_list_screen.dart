@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:places/mocks.dart';
+import 'package:places/screens/filters_screen.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
@@ -103,6 +104,31 @@ class ScreenSightList extends StatelessWidget {
                     text: 'Cписок\nинтересных мест',
                     style: Theme.of(context).textTheme.headline1),
               ]),
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.all(16),
+          height: 40,
+          width: double.infinity,
+          child: IconButton(
+            onPressed: () {
+              print('$runtimeType tap on filter');
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => FiltersScreen(),
+                ),
+              );
+            },
+            icon: SvgPicture.asset(
+              'assets/icons/filter.svg',
+              color: Theme.of(context).buttonTheme.colorScheme?.background,
+              width: 24,
+              height: 24,
             ),
           ),
         ),
