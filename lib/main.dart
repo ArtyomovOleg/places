@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:places/ui/screen/visiting_screen.dart';
-import 'ui/screen/sight_list_screen.dart';
-import 'ui/screen/res/themes.dart';
+import 'ui/screens/visiting_screen.dart';
+import 'ui/screens/sight_list_screen.dart';
+import 'ui/screens/res/themes.dart';
 
 void main() {
   runApp(App());

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_card_visiting.dart';
+import 'package:places/ui/screens/sight_card_visiting.dart';
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({Key? key}) : super(key: key);

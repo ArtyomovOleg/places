@@ -54,6 +54,17 @@ final ThemeData lightTheme = ThemeData(
     button: textWithoutStyle,
     overline: textWithoutStyle,
   ),
+  switchTheme: SwitchThemeData(
+    thumbColor: MaterialStateColor.resolveWith(
+      (states) => Colors.red,
+    ),
+    trackColor: MaterialStateColor.resolveWith(
+      (states) => Colors.red,
+    ),
+    overlayColor: MaterialStateColor.resolveWith(
+      (states) => Colors.red,
+    ),
+  ),
 );
 
 final ThemeData darkTheme = ThemeData(
