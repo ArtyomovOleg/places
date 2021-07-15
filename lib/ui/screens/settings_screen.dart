@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:places/ui/screens/res/themes.dart';
+import 'package:places/ui/universal/theme_changer.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -11,10 +13,13 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool darkTheme = false;
+  late bool darkTheme;
 
   @override
   Widget build(BuildContext context) {
+    final ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
+    darkTheme = _themeChanger.getThemeMode() == ThemeMode.dark ? true : false;
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 56,
@@ -50,6 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (value) {
                   setState(() {
                     darkTheme = value;
+                    _themeChanger.change();
                   });
                 },
               ),

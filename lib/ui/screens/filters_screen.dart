@@ -140,7 +140,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       child: Text(
                         'Расстояние',
                         style: TextStyle(
-                          color: Color(0xFF252849),
+                          color: Theme.of(context).buttonColor,
                           fontSize: 16.0,
                           height: 1.25,
                           fontFamily: 'Roboto',

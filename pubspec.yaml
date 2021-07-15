@@ -18,6 +18,8 @@ dependencies:
   # message translation, plurals and genders, date/number formatting and
   # parsing, and bidirectional text.
   intl: ^0.17.0
+  
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
