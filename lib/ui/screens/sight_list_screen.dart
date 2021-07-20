@@ -159,21 +159,7 @@ class ScreenSightList extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(0),
             children: [
-              for (final sight in mocks)
-                ListTile(
-                  title: SightCard(sight),
-                  contentPadding: const EdgeInsets.all(0),
-                  horizontalTitleGap: 0,
-                  minVerticalPadding: 0,
-                  onTap: () {
-                    print('Tap on: ${sight.name}');
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => SightDetails(sight),
-                      ),
-                    );
-                  },
-                ),
+              for (final sight in mocks) SightCard(sight),
             ],
           ),
         ),
