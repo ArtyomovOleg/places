@@ -196,23 +196,6 @@ class _SightCardState extends State<SightCard> {
               ),
             ),
           );
-
-          // DecoratedBox(
-          //   child: Container(),
-          //   decoration: BoxDecoration(
-          //     borderRadius: const BorderRadius.vertical(
-          //       top: Radius.circular(16),
-          //     ),
-          //     image: DecorationImage(
-          //       image: snapshot.data!.image,
-          //       fit: BoxFit.cover,
-          //       colorFilter: ColorFilter.mode(
-          //         Colors.white24,
-          //         BlendMode.lighten,
-          //       ),
-          //     ),
-          //   ),
-          // );
         } else if (snapshot.hasError) {
           child = Container();
         } else {

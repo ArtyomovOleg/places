@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:places/mocks.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/universal/buttons.dart';
 import 'package:places/ui/universal/filter_catalog.dart';
 
@@ -137,16 +138,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     flex: 1,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Расстояние',
-                        style: TextStyle(
-                          color: Theme.of(context).buttonColor,
-                          fontSize: 16.0,
-                          height: 1.25,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      child: Text('Расстояние', style: filtersTitle(context)),
                     ),
                   ),
                   Flexible(
@@ -155,13 +147,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       alignment: Alignment.centerRight,
                       child: Text(
                         'то 0.1 до 21k км',
-                        style: TextStyle(
-                          color: Color(0xFF7C7E92),
-                          fontSize: 16.0,
-                          height: 1.25,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style: filtersDistance,
                       ),
                     ),
                   )
@@ -198,15 +184,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   child: Center(
                     child: Text(
                       'ПОКАЗАТЬ ($filteredSights)',
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 14.0,
-                        height: 1.28571,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: filterShowButton,
                     ),
                   ),
                 ),
