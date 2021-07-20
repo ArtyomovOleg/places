@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/universal/buttons.dart';
 
 class SightDetails extends StatelessWidget {
@@ -96,15 +97,7 @@ class SightDetails extends StatelessWidget {
                         opacity: 0.56,
                         child: Text(
                           'закрыто до 09:00',
-                          style: TextStyle(
-                            color: Color(0xFF7C7E92),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FontStyle.normal,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: sightDetailsWorkTime,
                         ),
                       ),
                     ),
@@ -117,15 +110,7 @@ class SightDetails extends StatelessWidget {
                 child: Text(
                   sight.details,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    color: Theme.of(context).textTheme.headline2?.color,
-                    fontSize: 14.0,
-                    height: 1.28571,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.normal,
-                    fontStyle: FontStyle.normal,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: sightDetailsTitle(context),
                 ),
               ),
               InkWell(
@@ -152,15 +137,7 @@ class SightDetails extends StatelessWidget {
                         SizedBox(width: 8),
                         Text(
                           'ПОСТРОИТЬ МАРШРУТ',
-                          style: TextStyle(
-                            color: Color(0xFFFFFFFF),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.normal,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: sightDetailsPlotACourse,
                         ),
                       ],
                     ),
@@ -202,18 +179,7 @@ class SightDetails extends StatelessWidget {
                               SizedBox(width: 8),
                               Text(
                                 'Запланировать',
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .buttonTheme
-                                      .colorScheme
-                                      ?.secondary,
-                                  fontSize: 14.0,
-                                  height: 1.28571,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.normal,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: sightDetailsButtonShadowed(context),
                               ),
                             ],
                           ),
@@ -246,18 +212,7 @@ class SightDetails extends StatelessWidget {
                               SizedBox(width: 8),
                               Text(
                                 'В избранное',
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .buttonTheme
-                                      .colorScheme
-                                      ?.primary,
-                                  fontSize: 14.0,
-                                  height: 1.28571,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.normal,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: sightDetailsButtonActive(context),
                               ),
                             ],
                           ),

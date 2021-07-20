@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 
 class SightCardWantVisit extends StatefulWidget {
   final Sight sight;
@@ -142,13 +143,7 @@ class _SightCardWantVisitState extends State<SightCardWantVisit> {
                           'Цель достигнута 12 окт. 2020',
                           overflow: TextOverflow.fade,
                           textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            color: Color(0xFF4CAF50),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w400,
-                          ),
+                          style: sightCardVisitingTitle,
                         ),
                       ),
                     ),
@@ -162,13 +157,7 @@ class _SightCardWantVisitState extends State<SightCardWantVisit> {
                           'закрыто до 09:00',
                           overflow: TextOverflow.fade,
                           textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            color: Color(0xFF7C7E92),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w400,
-                          ),
+                          style: sightCardVisitingWorkTime,
                         ),
                       ),
                     ),
@@ -361,13 +350,7 @@ class _SightCardVisitedState extends State<SightCardVisited> {
                           'Цель достигнута 12 окт. 2020',
                           overflow: TextOverflow.fade,
                           textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            color: Color(0xFF7C7E92),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.normal,
-                          ),
+                          style: sightCardVisitingAchieved,
                         ),
                       ),
                     ),
@@ -381,13 +364,7 @@ class _SightCardVisitedState extends State<SightCardVisited> {
                           'закрыто до 09:00',
                           overflow: TextOverflow.fade,
                           textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            color: Color(0xFF7C7E92),
-                            fontSize: 14.0,
-                            height: 1.28571,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.normal,
-                          ),
+                          style: sightCardVisitingAchieved,
                         ),
                       ),
                     ),

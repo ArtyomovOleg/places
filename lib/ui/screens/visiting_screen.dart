@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:places/mocks.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/screens/sight_card_visiting.dart';
 
 class VisitingScreen extends StatefulWidget {
@@ -21,16 +22,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
           title: Container(
             height: 56,
             child: Center(
-              child: Text(
-                'Избранное',
-                style: TextStyle(
-                  color: Theme.of(context).textTheme.headline1?.color,
-                  fontSize: 18.0,
-                  height: 1.33333,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              child: Text('Избранное', style: visitingFavoriteTitle(context)),
             ),
           ),
           bottom: PreferredSize(
