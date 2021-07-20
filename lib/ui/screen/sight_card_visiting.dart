@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:places/domain/sight.dart';
 
-class SightCardWantVisit extends StatelessWidget {
+class SightCardWantVisit extends StatefulWidget {
   final Sight sight;
+  final List<SvgPicture> iconsCalendar = [
+    SvgPicture.asset(
+      'assets/icons/calendar_outline.svg',
+      width: 24,
+      height: 24,
+    ),
+    SvgPicture.asset(
+      'assets/icons/calendar_fill.svg',
+      width: 24,
+      height: 24,
+    ),
+  ];
 
   SightCardWantVisit(this.sight, {Key? key}) : super(key: key);
+
+  @override
+  _SightCardWantVisitState createState() => _SightCardWantVisitState();
+}
+
+class _SightCardWantVisitState extends State<SightCardWantVisit> {
+  int calendarIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +54,7 @@ class SightCardWantVisit extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  sight.assetImagePath.isNotEmpty
+                  widget.sight.assetImagePath.isNotEmpty
                       // ? Image.asset(sight.assetImagePath)
                       ? imageFutureBuilder()
                       : Container(),
@@ -42,25 +62,47 @@ class SightCardWantVisit extends StatelessWidget {
                     left: 16,
                     top: 16,
                     child: Text(
-                      sight.type.toString().split('.').last,
+                      widget.sight.type.toString().split('.').last,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Positioned(
-                    right: 18,
-                    top: 19,
+                    right: 16,
+                    top: 16,
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.calendar_today_rounded,
-                          size: 24,
-                          color: Colors.white,
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(0),
+                            iconSize: 24,
+                            onPressed: () {
+                              print(
+                                  '$runtimeType (${widget.sight.type}) calendar icon has pressed');
+                              setState(() {
+                                calendarIndex = (calendarIndex - 1).abs();
+                              });
+                            },
+                            icon: widget.iconsCalendar[calendarIndex],
+                          ),
                         ),
-                        SizedBox(width: 22),
-                        Icon(
-                          Icons.clear_rounded,
-                          size: 24,
-                          color: Colors.white,
+                        SizedBox(width: 16),
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(0),
+                            iconSize: 24,
+                            onPressed: () {
+                              print(
+                                  '$runtimeType (${widget.sight.type}) close icon has pressed');
+                            },
+                            icon: Icon(
+                              Icons.close_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -84,7 +126,7 @@ class SightCardWantVisit extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       child: Text(
-                        sight.name,
+                        widget.sight.name,
                         maxLines: 2,
                         style: Theme.of(context).textTheme.headline5,
                       ),
@@ -144,7 +186,7 @@ class SightCardWantVisit extends StatelessWidget {
     return Future<Image>.delayed(
       const Duration(seconds: 1), // задержка для демонстрации лоадера
       () => Image.asset(
-        sight.assetImagePath,
+        widget.sight.assetImagePath,
         fit: BoxFit.cover,
         colorBlendMode: BlendMode.lighten,
         color: Colors.white24,
@@ -191,11 +233,22 @@ class SightCardWantVisit extends StatelessWidget {
   }
 }
 
-class SightCardVisited extends StatelessWidget {
+class SightCardVisited extends StatefulWidget {
   final Sight sight;
+
+  final iconShare = SvgPicture.asset(
+    'assets/icons/share.svg',
+    width: 24,
+    height: 24,
+  );
 
   SightCardVisited(this.sight, {Key? key}) : super(key: key);
 
+  @override
+  _SightCardVisitedState createState() => _SightCardVisitedState();
+}
+
+class _SightCardVisitedState extends State<SightCardVisited> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -223,7 +276,7 @@ class SightCardVisited extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  sight.assetImagePath.isNotEmpty
+                  widget.sight.assetImagePath.isNotEmpty
                       // ? Image.asset(sight.assetImagePath)
                       ? imageFutureBuilder()
                       : Container(),
@@ -231,25 +284,44 @@ class SightCardVisited extends StatelessWidget {
                     left: 16,
                     top: 16,
                     child: Text(
-                      sight.type.toString().split('.').last,
+                      widget.sight.type.toString().split('.').last,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Positioned(
-                    right: 18,
-                    top: 19,
+                    right: 16,
+                    top: 16,
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.share_rounded,
-                          size: 24,
-                          color: Colors.white,
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(0),
+                            iconSize: 24,
+                            onPressed: () {
+                              print(
+                                  '$runtimeType (${widget.sight.type}) share icon has pressed');
+                            },
+                            icon: widget.iconShare,
+                          ),
                         ),
-                        SizedBox(width: 22),
-                        Icon(
-                          Icons.clear_rounded,
-                          size: 24,
-                          color: Colors.white,
+                        SizedBox(width: 16),
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(0),
+                            iconSize: 24,
+                            onPressed: () {
+                              print(
+                                  '$runtimeType (${widget.sight.type}) close icon has pressed');
+                            },
+                            icon: Icon(
+                              Icons.close_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -273,7 +345,7 @@ class SightCardVisited extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       child: Text(
-                        sight.name,
+                        widget.sight.name,
                         maxLines: 2,
                         style: Theme.of(context).textTheme.headline5,
                       ),
@@ -333,7 +405,7 @@ class SightCardVisited extends StatelessWidget {
     return Future<Image>.delayed(
       const Duration(seconds: 1), // задержка для демонстрации лоадера
       () => Image.asset(
-        sight.assetImagePath,
+        widget.sight.assetImagePath,
         fit: BoxFit.cover,
         colorBlendMode: BlendMode.lighten,
         color: Colors.white24,
