@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:intl/intl.dart';
 
@@ -141,7 +140,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       child: Text(
                         'Расстояние',
                         style: TextStyle(
-                          color: Color(0xFF252849),
+                          color: Theme.of(context).buttonColor,
                           fontSize: 16.0,
                           height: 1.25,
                           fontFamily: 'Roboto',
@@ -155,7 +154,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'то 0.1 до 40k км',
+                        'то 0.1 до 21k км',
                         style: TextStyle(
                           color: Color(0xFF7C7E92),
                           fontSize: 16.0,
@@ -178,8 +177,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   print('Distance change: $distance');
                 },
                 min: 100,
-                max:
-                    40000000, // В академических целях увеличил дистанцию до 40k km
+                // В академических целях увеличил дистанцию до 21k km
+                max: 21000000,
                 divisions: 100,
               ),
               Text('${distanceFormatter(distance)} km'),

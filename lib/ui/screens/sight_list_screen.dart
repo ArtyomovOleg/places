@@ -3,10 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:places/mocks.dart';
-import 'package:places/screens/filters_screen.dart';
-import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/ui/screen/sight_details.dart';
-import 'package:places/ui/screen/visiting_screen.dart';
+import 'package:places/ui/screens/filters_screen.dart';
+import 'package:places/ui/screens/settings_screen.dart';
+import 'package:places/ui/screens/sight_card.dart';
+import 'package:places/ui/screens/sight_details.dart';
+import 'package:places/ui/screens/visiting_screen.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -20,37 +21,52 @@ class _SightListScreenState extends State<SightListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SvgPicture iconListFill = SvgPicture.asset(
+    final SvgPicture iconListFill = SvgPicture.asset(
       'assets/icons/list_fill.svg',
       color: Theme.of(context).buttonTheme.colorScheme?.primary,
       width: 24,
       height: 24,
     );
 
-    SvgPicture iconListOutline = SvgPicture.asset(
+    final SvgPicture iconListOutline = SvgPicture.asset(
       'assets/icons/list_outline.svg',
       color: Theme.of(context).buttonTheme.colorScheme?.primary,
       width: 24,
       height: 24,
     );
 
-    SvgPicture iconHeartFill = SvgPicture.asset(
+    final SvgPicture iconHeartFill = SvgPicture.asset(
       'assets/icons/heart_checked.svg',
       color: Theme.of(context).buttonTheme.colorScheme?.primary,
       width: 24,
       height: 24,
     );
 
-    SvgPicture iconHeartOutline = SvgPicture.asset(
+    final SvgPicture iconHeartOutline = SvgPicture.asset(
       'assets/icons/heart_unchecked.svg',
       color: Theme.of(context).buttonTheme.colorScheme?.primary,
       width: 24,
       height: 24,
     );
 
-    List<Widget> _navigationBarScreens = <Widget>[
+    final SvgPicture iconSettingsFill = SvgPicture.asset(
+      'assets/icons/settings_fill.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    final SvgPicture iconSettingsOutline = SvgPicture.asset(
+      'assets/icons/settings_outline.svg',
+      color: Theme.of(context).buttonTheme.colorScheme?.primary,
+      width: 24,
+      height: 24,
+    );
+
+    final List<Widget> _navigationBarScreens = <Widget>[
       ScreenSightList(),
       VisitingScreen(),
+      SettingsScreen(),
     ];
 
     return Scaffold(
@@ -77,6 +93,12 @@ class _SightListScreenState extends State<SightListScreen> {
                 : iconHeartOutline,
             label: 'Хочу посетить / Посещенные места',
           ),
+          BottomNavigationBarItem(
+            icon: indexBottomNavigationBar == 2
+                ? iconSettingsFill
+                : iconSettingsOutline,
+            label: 'Настройки',
+          ),
         ],
       ),
     );
@@ -84,9 +106,7 @@ class _SightListScreenState extends State<SightListScreen> {
 }
 
 class ScreenSightList extends StatelessWidget {
-  const ScreenSightList({
-    Key? key,
-  }) : super(key: key);
+  const ScreenSightList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:places/ui/screen/visiting_screen.dart';
-import 'ui/screen/sight_list_screen.dart';
-import 'ui/screen/res/themes.dart';
+import 'package:provider/provider.dart';
+
+import 'package:places/ui/universal/theme_changer.dart';
+import 'ui/screens/sight_list_screen.dart';
+import 'ui/screens/res/themes.dart';
 
 void main() {
-  runApp(App());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeChanger(),
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -14,8 +21,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Places',
       home: SightListScreen(),
-      // home: VisitingScreen(),
-      themeMode: ThemeMode.light,
+      themeMode: context.watch<ThemeChanger>().themeMode,
       theme: lightTheme,
       darkTheme: darkTheme,
     );
