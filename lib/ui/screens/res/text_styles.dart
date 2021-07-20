@@ -28,3 +28,33 @@ final TextStyle filterShowButton = TextStyle(
   fontStyle: FontStyle.normal,
   decoration: TextDecoration.none,
 );
+
+TextStyle settingsTitle(BuildContext context) {
+  return TextStyle(
+    fontSize: 18.0,
+    height: 1.33333,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500,
+    color: Theme.of(context).buttonColor,
+  );
+}
+
+TextStyle settingsThemeTitle(BuildContext context) {
+  return TextStyle(
+    fontSize: 16.0,
+    height: 1.25,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w400,
+    color: Theme.of(context).buttonColor,
+  );
+}
+
+TextStyle settingsTutorialTitle(BuildContext context) {
+  return TextStyle(
+    fontSize: 16.0,
+    height: 1.25,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w400,
+    color: Theme.of(context).buttonColor,
+  );
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,16 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 56,
-        title: Text(
-          'Настройки',
-          style: TextStyle(
-            fontSize: 18.0,
-            height: 1.33333,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
-            color: Theme.of(context).buttonColor,
-          ),
-        ),
+        title: Text('Настройки', style: settingsTitle(context)),
         elevation: 0,
       ),
       body: Padding(
@@ -42,13 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTile(
               title: Text(
                 'Тёмная тема',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  height: 1.25,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w400,
-                  color: Theme.of(context).buttonColor,
-                ),
+                style: settingsThemeTitle(context),
               ),
               trailing: Switch.adaptive(
                 value: darkTheme,
@@ -64,13 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTile(
               title: Text(
                 'Смотреть туториал',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  height: 1.25,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w400,
-                  color: Theme.of(context).buttonColor,
-                ),
+                style: settingsTutorialTitle(context),
               ),
               trailing: Padding(
                 padding: const EdgeInsets.all(8.0),
