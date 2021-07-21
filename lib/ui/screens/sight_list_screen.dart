@@ -72,6 +72,7 @@ class _SightListScreenState extends State<SightListScreen> {
       body: _navigationBarScreens[indexBottomNavigationBar],
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 4,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         currentIndex: indexBottomNavigationBar,
@@ -151,10 +152,7 @@ class ScreenSightList extends StatelessWidget {
             ),
           ),
         ),
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.7 - 72 - 80,
-          ),
+        Expanded(
           child: ListView(
             padding: const EdgeInsets.all(0),
             children: [
