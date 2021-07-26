@@ -27,7 +27,7 @@ const TextStyle filterShowButton = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-TextStyle settingsTitle(BuildContext context) {
+TextStyle settingsTopTitle(BuildContext context) {
   return TextStyle(
     fontSize: 18.0,
     height: 1.33333,
@@ -37,17 +37,7 @@ TextStyle settingsTitle(BuildContext context) {
   );
 }
 
-TextStyle settingsThemeTitle(BuildContext context) {
-  return TextStyle(
-    fontSize: 16.0,
-    height: 1.25,
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    color: Theme.of(context).buttonColor,
-  );
-}
-
-TextStyle settingsTutorialTitle(BuildContext context) {
+TextStyle settingsTitle(BuildContext context) {
   return TextStyle(
     fontSize: 16.0,
     height: 1.25,
@@ -136,3 +126,46 @@ TextStyle visitingFavoriteTitle(BuildContext context) {
     fontWeight: FontWeight.w500,
   );
 }
+
+const TextStyle addSightTopCancelTitle = TextStyle(
+  color: Color(0xFF7C7E92),
+  fontSize: 16.0,
+  height: 1.25,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+);
+
+const TextStyle addSightTopTitle = TextStyle(
+  color: Color(0xFF252849),
+  fontSize: 18.0,
+  height: 1.33333,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+);
+
+const TextStyle addSightTextFieldTitle = TextStyle(
+  color: Color(0xFF7C7E92),
+  fontSize: 16.0,
+  height: 1.25,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w400,
+);
+
+TextStyle addSightMapLink(BuildContext context) {
+  return TextStyle(
+    color: Theme.of(context).buttonTheme.colorScheme?.background,
+    fontSize: 16.0,
+    height: 1.25,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500,
+  );
+}
+
+const TextStyle addSightCreateButtonTitle = TextStyle(
+  color: Color(0xFFFFFFFF),
+  fontSize: 14.0,
+  height: 1.28571,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w700,
+  letterSpacing: 0.03,
+);

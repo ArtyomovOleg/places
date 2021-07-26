@@ -24,7 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 56,
-        title: Text('Настройки', style: settingsTitle(context)),
+        title: Text('Настройки', style: settingsTopTitle(context)),
         elevation: 0,
       ),
       body: Padding(
@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTile(
               title: Text(
                 'Тёмная тема',
-                style: settingsThemeTitle(context),
+                style: settingsTitle(context),
               ),
               trailing: Switch.adaptive(
                 value: darkTheme,
@@ -50,7 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTile(
               title: Text(
                 'Смотреть туториал',
-                style: settingsTutorialTitle(context),
+                style: settingsTitle(context),
               ),
               trailing: Padding(
                 padding: const EdgeInsets.all(8.0),

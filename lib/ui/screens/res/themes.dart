@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
   colorScheme: ColorScheme.light(),
   primaryColor: const Color(0xFFFFFFFF),
-  buttonColor: Color(0xFF252849),
+  buttonColor: const Color(0xFF252849),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: const Color(0xFF252849),
+  ),
   buttonTheme: ButtonThemeData(
     colorScheme: ColorScheme.light(
-      background: Color(0xFF4CAF50),
-      primary: Color(0xFF3B3E5B),
-      secondary: Color(0xFF7C7E92).withOpacity(0.56),
+      background: const Color(0xFF4CAF50),
+      primary: const Color(0xFF3B3E5B),
+      secondary: const Color(0xFF7C7E92).withOpacity(0.56),
     ),
   ),
   scaffoldBackgroundColor: const Color(0xFFFFFFFF),
@@ -71,6 +74,9 @@ final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme.dark(),
   primaryColor: const Color(0xFFb21222C),
   buttonColor: Color(0xFFFFFFFF),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: const Color(0xFFFFFFFF),
+  ),
   buttonTheme: ButtonThemeData(
     colorScheme: ColorScheme.dark(
       background: Color(0xFF6ADA6F),
