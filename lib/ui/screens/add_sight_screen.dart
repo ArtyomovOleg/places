@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:places/domain/sight.dart';
-import 'package:places/mocks.dart';
 import 'package:places/ui/screens/res/border_styles.dart';
 import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/universal/buttons.dart';
 
 class AddSightScreen extends StatefulWidget {
-  const AddSightScreen({Key? key}) : super(key: key);
+  final Function mockAddSight;
+
+  AddSightScreen({Key? key, required this.mockAddSight}) : super(key: key);
 
   @override
   _AddSightScreenState createState() => _AddSightScreenState();
@@ -57,6 +58,17 @@ class _AddSightScreenState extends State<AddSightScreen> {
       _textEditingControllerCategory.text =
           sightType.toString().split('.').last;
     });
+  }
+
+  void mockAddSight() {
+    Sight sight = Sight()
+      ..type = selectedSightType
+      ..name = _textEditingControllerName.text
+      ..lat = double.tryParse(_textEditingControllerLatitude.text) ?? 0
+      ..lon = double.tryParse(_textEditingControllerLongitude.text) ?? 0
+      ..details = _textEditingControllerDescription.text;
+    widget.mockAddSight(sight);
+    print('$runtimeType mockAddSight');
   }
 
   @override
@@ -162,7 +174,8 @@ class _AddSightScreenState extends State<AddSightScreen> {
                               focusedBorder: addSightBorderFocused,
                               suffixIcon: _focusNodeName.hasFocus
                                   ? ClearFieldButton(
-                                      _textEditingControllerName,
+                                      textEditingController:
+                                          _textEditingControllerName,
                                     )
                                   : SizedBox.shrink(),
                             ),
@@ -219,7 +232,8 @@ class _AddSightScreenState extends State<AddSightScreen> {
                                         focusedBorder: addSightBorderFocused,
                                         suffixIcon: _focusNodeLatitude.hasFocus
                                             ? ClearFieldButton(
-                                                _textEditingControllerLatitude,
+                                                textEditingController:
+                                                    _textEditingControllerLatitude,
                                               )
                                             : SizedBox.shrink(),
                                       ),
@@ -278,7 +292,8 @@ class _AddSightScreenState extends State<AddSightScreen> {
                                         focusedBorder: addSightBorderFocused,
                                         suffixIcon: _focusNodeLongitude.hasFocus
                                             ? ClearFieldButton(
-                                                _textEditingControllerLongitude,
+                                                textEditingController:
+                                                    _textEditingControllerLongitude,
                                               )
                                             : SizedBox.shrink(),
                                       ),
@@ -335,7 +350,8 @@ class _AddSightScreenState extends State<AddSightScreen> {
                               focusedBorder: addSightBorderFocused,
                               suffixIcon: _focusNodeDescription.hasFocus
                                   ? ClearFieldButton(
-                                      _textEditingControllerDescription,
+                                      textEditingController:
+                                          _textEditingControllerDescription,
                                     )
                                   : SizedBox.shrink(),
                             ),
@@ -348,7 +364,10 @@ class _AddSightScreenState extends State<AddSightScreen> {
                         Expanded(
                           child: Align(
                             alignment: Alignment.bottomCenter,
-                            child: CreateSightButton(createButtonActive),
+                            child: CreateSightButton(
+                              createButtonActive: createButtonActive,
+                              mockAddSight: mockAddSight,
+                            ),
                           ),
                         ),
                       ],
@@ -367,7 +386,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
 class ClearFieldButton extends StatelessWidget {
   final TextEditingController textEditingController;
 
-  const ClearFieldButton(this.textEditingController, {Key? key})
+  const ClearFieldButton({Key? key, required this.textEditingController})
       : super(key: key);
 
   @override
@@ -384,9 +403,13 @@ class ClearFieldButton extends StatelessWidget {
 
 class CreateSightButton extends StatefulWidget {
   final bool createButtonActive;
+  final Function mockAddSight;
 
-  const CreateSightButton(this.createButtonActive, {Key? key})
-      : super(key: key);
+  const CreateSightButton({
+    Key? key,
+    required this.createButtonActive,
+    required this.mockAddSight,
+  }) : super(key: key);
 
   @override
   _CreateSightButtonState createState() => _CreateSightButtonState();
@@ -399,7 +422,7 @@ class _CreateSightButtonState extends State<CreateSightButton> {
       onTap: () {
         if (widget.createButtonActive) {
           print('$runtimeType sight create');
-          mocks.clear();
+          widget.mockAddSight();
           Navigator.of(context).maybePop();
         }
       },

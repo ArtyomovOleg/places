@@ -35,10 +35,12 @@ class SightDetails extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment(0.6, 0),
                         ),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: ExactAssetImage(sight.assetImagePath),
-                        ),
+                        image: sight.assetImagePath.isNotEmpty
+                            ? DecorationImage(
+                                fit: BoxFit.cover,
+                                image: ExactAssetImage(sight.assetImagePath),
+                              )
+                            : null,
                       ),
                     ),
                     Expanded(
@@ -54,10 +56,12 @@ class SightDetails extends StatelessWidget {
                             begin: Alignment.centerLeft,
                             end: Alignment(0, 0.6),
                           ),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: ExactAssetImage(sight.assetImagePath),
-                          ),
+                          image: sight.assetImagePath.isNotEmpty
+                              ? DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: ExactAssetImage(sight.assetImagePath),
+                                )
+                              : null,
                         ),
                       ),
                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/screens/filters_screen.dart';
@@ -19,6 +20,13 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   int indexBottomNavigationBar = 0;
+
+  void mockAddSight(Sight sight) {
+    print('$runtimeType mockAddSight & setState');
+    setState(() {
+      mocks.add(sight);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +142,9 @@ class _SightListScreenState extends State<SightListScreen> {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (BuildContext context) => AddSightScreen(),
+              builder: (BuildContext context) => AddSightScreen(
+                mockAddSight: mockAddSight,
+              ),
             ),
           );
         },
@@ -143,9 +153,14 @@ class _SightListScreenState extends State<SightListScreen> {
   }
 }
 
-class ScreenSightList extends StatelessWidget {
+class ScreenSightList extends StatefulWidget {
   const ScreenSightList({Key? key}) : super(key: key);
 
+  @override
+  _ScreenSightListState createState() => _ScreenSightListState();
+}
+
+class _ScreenSightListState extends State<ScreenSightList> {
   @override
   Widget build(BuildContext context) {
     return Container(
