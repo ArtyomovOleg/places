@@ -381,6 +381,17 @@ class _AddSightScreenState extends State<AddSightScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _textEditingControllerCategory.dispose();
+    _textEditingControllerName.dispose();
+    _textEditingControllerLatitude.dispose();
+    _textEditingControllerLongitude.dispose();
+    _textEditingControllerDescription.dispose();
+
+    super.dispose();
+  }
 }
 
 class ClearFieldButton extends StatelessWidget {
