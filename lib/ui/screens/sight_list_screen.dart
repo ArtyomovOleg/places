@@ -5,11 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/add_sight_screen.dart';
-import 'package:places/ui/screens/filters_screen.dart';
 import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/screens/settings_screen.dart';
 import 'package:places/ui/screens/sight_card.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
+import 'package:places/ui/screens/widgets/search_bar.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -164,10 +164,11 @@ class _ScreenSightListState extends State<ScreenSightList> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 64, 16, 16),
+          padding: const EdgeInsets.fromLTRB(0, 64, 0, 16),
           child: Container(
             width: double.infinity,
             height: 72,
@@ -180,31 +181,7 @@ class _ScreenSightListState extends State<ScreenSightList> {
             ),
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          margin: const EdgeInsets.all(16),
-          height: 40,
-          width: double.infinity,
-          child: IconButton(
-            onPressed: () {
-              print('$runtimeType tap on filter');
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => FiltersScreen(),
-                ),
-              );
-            },
-            icon: SvgPicture.asset(
-              'assets/icons/filter.svg',
-              color: Theme.of(context).buttonTheme.colorScheme?.background,
-              width: 24,
-              height: 24,
-            ),
-          ),
-        ),
+        SearchBar(),
         Expanded(
           child: ListView(
             padding: const EdgeInsets.all(0),
