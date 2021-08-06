@@ -112,7 +112,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 child: GridView.count(
                   padding: const EdgeInsets.symmetric(horizontal: 24.5),
                   crossAxisCount: 3,
-                  crossAxisSpacing: 35,
                   mainAxisSpacing: 40,
                   children: [
                     for (final filterName in filterIcons.keys)

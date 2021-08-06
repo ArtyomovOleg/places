@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
+import 'package:places/ui/screens/add_sight_screen.dart';
 import 'package:places/ui/screens/filters_screen.dart';
+import 'package:places/ui/screens/res/text_styles.dart';
 import 'package:places/ui/screens/settings_screen.dart';
 import 'package:places/ui/screens/sight_card.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
@@ -17,6 +20,13 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   int indexBottomNavigationBar = 0;
+
+  void mockAddSight(Sight sight) {
+    print('$runtimeType mockAddSight & setState');
+    setState(() {
+      mocks.add(sight);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +82,7 @@ class _SightListScreenState extends State<SightListScreen> {
       body: _navigationBarScreens[indexBottomNavigationBar],
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 4,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         currentIndex: indexBottomNavigationBar,
@@ -100,13 +111,56 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: InkWell(
+        child: Container(
+          width: 177,
+          height: 48,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFFFCDD3D),
+                Color(0xFF4CAF50),
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.add_rounded, size: 24, color: Colors.white),
+              SizedBox(width: 8),
+              Text(
+                'НОВОЕ МЕСТО',
+                style: sightDetailsPlotACourse.copyWith(letterSpacing: 0.03),
+              )
+            ],
+          ),
+        ),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) => AddSightScreen(
+                mockAddSight: mockAddSight,
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
 
-class ScreenSightList extends StatelessWidget {
+class ScreenSightList extends StatefulWidget {
   const ScreenSightList({Key? key}) : super(key: key);
 
+  @override
+  _ScreenSightListState createState() => _ScreenSightListState();
+}
+
+class _ScreenSightListState extends State<ScreenSightList> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -151,10 +205,7 @@ class ScreenSightList extends StatelessWidget {
             ),
           ),
         ),
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.7 - 72 - 80,
-          ),
+        Expanded(
           child: ListView(
             padding: const EdgeInsets.all(0),
             children: [
