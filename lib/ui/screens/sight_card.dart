@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:places/domain/sight.dart';
@@ -24,7 +23,7 @@ class _SightCardState extends State<SightCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+      margin: const EdgeInsets.only(bottom: 16),
       height: 188,
       width: double.infinity,
       child: Material(
